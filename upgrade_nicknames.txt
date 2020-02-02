@@ -246,7 +246,6 @@ Glue Gunner
         super glue
         superglue
         super-glue
-
 Sniper Monkey
     100
         full metal
@@ -625,7 +624,6 @@ Super Monkey
     001
         knockback
         knockback super
-
     003
         batman
         dark knight
