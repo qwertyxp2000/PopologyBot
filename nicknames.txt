@@ -1,0 +1,80 @@
+Dart Monkey
+    dart
+    dart monkey
+    dart tower
+Boomerang Monkey
+    boomer
+    boomerang
+    boomer monkey
+    boomer tower
+    boomerang monkey
+    boomerang tower
+    boomerang thrower
+Bomb Shooter
+    bomb
+    cannon
+    bomb tower
+    cannon tower
+    bomb shooter
+    cannon shooter
+Tack Shooter
+    tack
+    tack tower
+    tack shooter
+Ice Monkey
+    ice
+    ice monkey
+    ice tower
+Glue Gunner
+    glue
+    glue monkey
+    glue tower
+    glue shooter
+    glue gunner
+Sniper Monkey
+    sniper
+    sniper monkey
+    sniper tower
+Monkey Sub
+    sub
+    monkey sub
+    sub monkey
+    sub tower
+    submarine
+    monkey submarine
+    submarine monkey
+    submarine tower
+Monkey Buccaneer
+    bucc
+    monkey bucc
+    bucc monkey
+    bucc tower
+    buccaneer
+    monkey buccaneer
+    buccaneer monkey
+    buccaneer tower
+    boat
+    monkey boat
+    boat monkey
+    boat tower
+Monkey Ace
+    ace
+    monkey ace
+    ace monkey
+    ace tower
+    plane
+    monkey plane
+    plane monkey
+    plane tower
+Heli Pilot
+    heli
+    heli pilot
+    monkey heli
+    heli monkey
+    heli tower
+    helicopter
+    helicopter pilot
+    monkey helicopter
+    helicopter monkey
+    helicopter tower
+Mortar Monkey
