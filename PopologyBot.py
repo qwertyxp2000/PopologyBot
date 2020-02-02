@@ -65,7 +65,7 @@ def get_popology_info(reddit):
 
 def get_tower_nicks():
     official_to_nicks = {}
-    nick_file = open("nicknames.txt", 'r')
+    nick_file = open("tower_nicknames.txt", 'r')
     current_tower = ""
 
     for line in nick_file.read().splitlines():
