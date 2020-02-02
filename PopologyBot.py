@@ -4,7 +4,7 @@ import re
 popology_text = []
 file_path = "commented.txt"
 official_to_nicks = {}
-
+popology_to_tower = []
 
 def authenticate():
     print("Authenticating...\n")
@@ -16,16 +16,29 @@ def authenticate():
 def main():
     global popology_text
     global official_to_nicks
+    global popology_to_tower
     reddit = authenticate()
     subreddit = reddit.subreddit("test")
     popology_text = get_popology_info(reddit)
     official_to_nicks = get_tower_nicks()
+    popology_to_tower = get_tower_categories()
 
     for comment in subreddit.comments(limit=250):
         match = re.findall(r'(?<=\[\[).+?(?=\]\])', comment.body)
 
         if match:
             process_comment(comment, match)
+
+
+def get_tower_categories():
+    popology_to_tower = [
+        ["Dart Monkey", "Boomerang Monkey", "Bomb Shooter", "Tack Shooter", "Ice Monkey", "Glue Gunner"],
+        ["Sniper Monkey", "Monkey Sub", "Monkey Buccaneer", "Monkey Ace", "Heli Pilot", "Mortar Monkey"],
+        ["Wizard Monkey", "Super Monkey", "Ninja Monkey", "Alchemist", "Druid"],
+        ["Banana Farm", "Spike Factory", "Monkey Village", "Engineer Monkey"],
+        ["Quincy", "Gwendolin", "Striker Jones", "Obyn Greenfoot", "Captain Churchill", "Benjamin", "Ezili",
+         "Pat Fusty", "Adora"]]
+    return popology_to_tower
 
 
 def get_popology_links():
@@ -100,12 +113,18 @@ def get_info(pruned_name, parsed_upgrade, search_until, popology_text):
     return popology_text[start_index:end_index].strip()
 
 
+def find_tower_category(tower):
+    for i, category in enumerate(popology_to_tower):
+        if tower in category:
+            return i
+
+
 def add_to_reply(upgrade, path, pruned_name):
     temp = list("000")
     temp[path] = upgrade
     parsed_upgrade = ''.join(temp)
     search_until = calc_search_until(upgrade, path, temp)
-    info = get_info(pruned_name, parsed_upgrade, search_until, popology_text[0])
+    info = get_info(pruned_name, parsed_upgrade, search_until, popology_text[find_tower_category(pruned_name)])
 
     if info[-1:] is '*':
         info = info[:-1].strip()
@@ -129,9 +148,11 @@ def process_comment(comment, match):
     reply = ""
 
     for tower in match:
-        # if tower[-3:].count('0') < 2:
-        #	print('\t' + tower + " cannot be parsed")
-        #	continue
+        check_upgrades = tower.strip()[-3:]
+
+        if len(re.findall(r'[1-5]', check_upgrades)) > 2 or len(re.findall(r'[3-5]', check_upgrades)) > 1:
+            print('\t' + tower + " cannot be parsed")
+            continue
 
         pruned_name = parse_tower(tower.strip()[:-3].lower().strip())
 
@@ -140,7 +161,7 @@ def process_comment(comment, match):
             continue
 
         print('\t' + tower + " is being parsed")
-        upgrades = list(tower[-3:])
+        upgrades = list(check_upgrades)
         reply = reply + "## " + pruned_name + " (" + "".join(upgrades) + ")\n"
         print(reply)
 
@@ -150,9 +171,10 @@ def process_comment(comment, match):
 
             reply = reply + add_to_reply(upgrade, path, pruned_name)
 
-    # comment.reply(reply.replace('\n', '\n\n'))
-    print(reply)
-    update_old_comments(comment.id)
+    if reply:
+        print(reply)
+        comment.reply(reply.replace('\n', '\n\n'))
+        update_old_comments(comment.id)
 
 
 if __name__ == "__main__":
