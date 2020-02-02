@@ -78,3 +78,147 @@ Heli Pilot
     helicopter monkey
     helicopter tower
 Mortar Monkey
+    mortar
+    mortar monkey
+    mortar tower
+Wizard Monkey
+    wiz
+    monkey wiz
+    wiz monkey
+    wiz tower
+    wizard
+    monkey wizard
+    wizard monkey
+    wizard tower
+    apprentice
+    monkey apprentice
+    apprentice monkey
+    apprentice tower
+Super Monkey
+    super
+    super monkey
+    super tower
+Ninja Monkey
+    ninja
+    ninja monkey
+    ninja tower
+    ninj
+    ninj monkey
+    ninj tower
+Alchemist
+    alch
+    alch monkey
+    alch tower
+    alchemist
+    alchemist monkey
+    alchemist tower
+Druid
+    druid
+    druid monkey
+    druid tower
+Banana Farm
+    farm
+    banana farm
+Spike Factory
+    spac
+    spact
+    spactory
+    spike
+    spike factory
+Monkey Village
+    village
+    monkey village
+    village monkey
+    village tower
+    monkey vill
+    vill monkey
+    vill tower
+Engineer Monkey
+    engineer
+    monkey engineer
+    engineer monkey
+    engineer tower
+    engi
+    monkey engi
+    engi monkey
+    engi tower
+    eng
+    monkey eng
+    eng monkey
+    eng tower
+Quincy
+    quincy
+    quincey
+    quinc
+    quonc
+    quonce
+    quoncy
+    quonk
+    big quonc
+    huge quonc
+    son of quincy
+    father of quincy
+    evolved from quincy
+    ancestor of quincy
+    descendant of quincy
+    for quincy you are and to quincy you shall return
+    cyber quincy
+    furry quincy
+Gwendolin
+    gwen
+    gwendolin
+    gwendolyn
+Striker Jones
+    striker
+    jones
+    striker jones
+    biker
+    bones
+    biker bones
+    who?
+Obyn Greenfoot
+    obyn
+    obyn greenfoot
+    ocyn
+    ocyn obyn
+    ocyn aquafoot
+Captain Churchill
+    churchill
+    church
+    captain churchill
+    capt churchill
+    capt. churchill
+    captain church
+    capt church
+    capt. church
+    captain
+    winston churchill
+    winston
+Benjamin
+    benjamin
+    ben
+    benny
+    benny boy
+    best hero
+    benjammin
+    benjammin'
+    yeet
+Ezili
+    ezili
+    voodoo
+    voodoo monkey
+Pat Fusty
+    pat
+    pat fusty
+    pat futsy
+    snowman
+    fusty the snowman
+    frosty
+    pat frosty
+    fusticator
+Adora
+    adora
+    dora
+    door
+    priestess
+    high priestess
