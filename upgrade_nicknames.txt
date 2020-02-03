@@ -471,6 +471,7 @@ Heli Pilot
         dartship
         apache dart
         apache dartship
+        apache
     500
         prime
         apache prime
@@ -607,6 +608,8 @@ Super Monkey
         vtsg
         true sun god
         vengeful true sun god
+    020
+        epic range
     030
         robo
         robo monkey
@@ -832,6 +835,7 @@ Spike Factory
         spiked balls
         spike ball
         spike balls
+        spiked ball factory
     400
         spiked mine
         spiked mines
@@ -889,6 +893,9 @@ Monkey Village
         primary ex
         primary expert
         primary expertise
+    010
+        grow blocker
+        grow block
     020
         radar
         radar scanner
@@ -908,8 +915,12 @@ Monkey Village
         homeland defense
     001
         discount village
+        business
+        monkey business
     002
         double discount
+        commerce
+        monkey commerce
     003
         town
         monkey town
@@ -955,6 +966,10 @@ Engineer Monkey
         ultra-boost
     002
         pin
+    003
+        double gun
+        more gun
+        use more gun
     004
         trap
         bloon trap
