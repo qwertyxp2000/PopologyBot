@@ -80,6 +80,14 @@ Boomerang Monkey
         gl
         glord
         glaive lord
+    004
+        press
+        moab press
+    005
+        moabdom
+        moab dom
+        domination
+        moab domination
 Bomb Shooter
     400
         impact
