@@ -3,7 +3,7 @@ Dart Monkey
         pult
         spikeopult
         spike-o-pult
-        monkey-pult
+        catapult
     400
         jug
         jugg
@@ -189,7 +189,7 @@ Ice Monkey
         arctic wind
     040
         snowstorm
-        050
+    050
         az
         a0
         absolute zero

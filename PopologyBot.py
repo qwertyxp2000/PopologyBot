@@ -4,7 +4,9 @@ import re
 popology_text = []
 file_path = "commented.txt"
 official_to_nicks = {}
+official_to_upgrade_nicks = {}
 popology_to_tower = []
+
 
 def authenticate():
     print("Authenticating...\n")
@@ -16,11 +18,13 @@ def authenticate():
 def main():
     global popology_text
     global official_to_nicks
+    global official_to_upgrade_nicks
     global popology_to_tower
     reddit = authenticate()
     subreddit = reddit.subreddit("test")
     popology_text = get_popology_info(reddit)
     official_to_nicks = get_tower_nicks()
+    official_to_upgrade_nicks = get_upgrade_nicks()
     popology_to_tower = get_tower_categories()
 
     for comment in subreddit.comments(limit=250):
@@ -69,13 +73,33 @@ def get_tower_nicks():
     current_tower = ""
 
     for line in nick_file.read().splitlines():
-        if not '    ' in line:
+        if '    ' not in line:
             official_to_nicks[line] = []
             current_tower = line
         else:
             official_to_nicks.get(current_tower).append(line.strip())
 
     return official_to_nicks
+
+
+def get_upgrade_nicks():
+    temp = {}
+    temp_file = open("upgrade_nicknames.txt", 'r')
+    current_tower = ""
+    current_upgrade = ""
+
+    for line in temp_file.read().splitlines():
+        if '    ' not in line:
+            temp[line] = {}
+            current_tower = line
+        else:
+            if '        ' not in line:
+                temp.get(current_tower)[line.strip()] = []
+                current_upgrade = line.strip()
+            else:
+                temp.get(current_tower).get(current_upgrade).append(line.strip())
+
+    return temp
 
 
 def update_old_comments(new_id):
@@ -90,6 +114,15 @@ def parse_tower(pruned_name):
             return official
 
     return None
+
+
+def get_official_upgrades(tower):
+    for official, upgrades in official_to_upgrade_nicks.items():
+        for upgrade, nicks in upgrades.items():
+            if tower in nicks:
+                return official, list(upgrade)
+
+    return None, None
 
 
 def calc_search_until(upgrade, path, temp):
@@ -148,28 +181,30 @@ def process_comment(comment, match):
     reply = ""
 
     for tower in match:
-        check_upgrades = tower.strip()[-3:]
+        tower = tower.strip()
 
-        if len(re.findall(r'[1-5]', check_upgrades)) > 2 or len(re.findall(r'[3-5]', check_upgrades)) > 1:
+        if not tower[-3:].isdigit():
+            official, upgrades = get_official_upgrades(tower.lower())
+        else:
+            if len(re.findall(r'[1-5]', tower[-3:])) > 2 or len(re.findall(r'[3-5]', tower[-3:])) > 1:
+                print('\t' + tower + " cannot be parsed because of invalid upgrades")
+                continue
+
+            official = parse_tower(tower[:-3].lower().strip())
+            upgrades = list(tower[-3:])
+
+        if not official:
             print('\t' + tower + " cannot be parsed")
             continue
 
-        pruned_name = parse_tower(tower.strip()[:-3].lower().strip())
-
-        if not pruned_name:
-            print(tower.strip()[:-3].lower().strip() + " could not be identified")
-            continue
-
         print('\t' + tower + " is being parsed")
-        upgrades = list(check_upgrades)
-        reply = reply + "## " + pruned_name + " (" + "".join(upgrades) + ")\n"
-        print(reply)
+        reply = reply + "## " + official + " (" + ''.join(upgrades) + ")\n"
 
         for path, upgrade in enumerate(upgrades, start=0):
             if int(upgrade) == 0:
                 continue
 
-            reply = reply + add_to_reply(upgrade, path, pruned_name)
+            reply = reply + add_to_reply(upgrade, path, official)
 
     if reply:
         print(reply)
